@@ -8,6 +8,12 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+	   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+	   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+	   crossorigin=""></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	</head>
 	<body>
@@ -15,42 +21,28 @@
 			<div class="row align-items-center">
 				<main class="col-sm-12 col-md-10 offset-md-1 col-xl-8 offset-xl-2 py-md-3 pl-md-5 bd-content">
 					<h2 class="mt-0">Калькулятор МС</h2>
-
-					<div style="width: auto;height: 315px" id="mapzqrq830i"></div>
-					<script src="//maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=GoogleReadyHandlerzqrq830i" async defer></script>
-					<script>function GoogleReadyHandlerzqrq830i() {
-					    var infoWindow, map = new google.maps.Map(document.getElementById("mapzqrq830i"), {
-					        center: {lat: 55.475631954804484, lng: 37.70112315068536},
-					        zoom: 7,
-					        disableDefaultUI: true,
-					        zoomControl: true,
-					        mapTypeControl: true,S
-					        mapTypeId: "roadmap"
-					    });
-					    return map;
-					}</script>
-					<div style="text-align: right;"><a href="https://maps-creator.com" target="_blank" style="color: #ccc; font: 13px Arial, Helvetica, sans-serif;">создано с помощью конструктора maps-creator.com</a></div>
+					<div id="mapid"></div>
 					<form>
 						<div id='app_calculation'>
-							<div class="input-group row mb-3">
+							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text">Широта:</span>
 								</div>
 								<input type="number" step="any" id="latitude" v-model="latitude" rows="15" class="form-control">
 							</div>
-							<div class="input-group row mb-3">
+							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text">Долгота:</span>
 								</div>
 								<input type="number" step="any" id= "longitude" v-model="longitude" rows="15" class="form-control">
 							</div>
-							<div class="input-group row mb-3">
+							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text">Дата:</span>
 								</div>
 								<input type="date" id= "date" rows="15" v-model="date" class="form-control">
 							</div>
-							<div class="input-group row mb-3">
+							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text">Альтитуда:</span>
 								</div>
