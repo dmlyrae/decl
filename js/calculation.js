@@ -336,6 +336,7 @@
 					longitude: 0,
 					altitude: 0,
 					date: 0,
+					success: true,
 				},
 				created: function () {
 					this.latitude = 55;
@@ -345,7 +346,14 @@
  				},
 				computed: {
 					result: function () {
-						
+						this.success = [this.latitude, this.longitude, this.altitude].every(
+							(subject) => {
+								return (subject !== '');
+							}
+						);					
+						if (!this.success) {
+							return "Неверный ввод.";
+						}
 						var lat = parseFloat(this.latitude),
 							lon = - parseFloat(this.longitude),
 							alt = parseFloat(this.altitude),
@@ -362,8 +370,11 @@
 				},
 				methods: {
 					update : function (text, event) {
+						console.log('df');
 						console.log(text);
 						console.log(event);
 					},
 				},
 			});
+
+
