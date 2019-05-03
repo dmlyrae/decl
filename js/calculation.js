@@ -351,8 +351,8 @@
 					}).addTo(this.mymap);
 
 					this.mymap.on('click', (e) => {
-						this.latitude = e.latlng.lat;
-						this.longitude = - e.latlng.lng;
+						this.latitude = (Math.sign(-e.latlng.lat) * (Math.floor(Math.abs(e.latlng.lat) / 180) % 2) * 180) + (e.latlng.lat % 180);
+						this.longitude = (Math.sign(e.latlng.lng) * (Math.floor(Math.abs(e.latlng.lng) / 180) % 2) * 180) + (-e.latlng.lng % 180);
 					});
 
 					this.latitude = 55;
@@ -375,6 +375,8 @@
 							alt = parseFloat(this.altitude),
 							date_calc = new Date(this.date),
 							azimuth = geoDec(lat, lon, alt, date_calc).dec;
+//						lat = (Math.sign(-lat) * (Math.floor(Math.abs(lat) / 180) % 2) * 180) + (lat % 180);
+//						lon = (Math.sign(-lon) * (Math.floor(Math.abs(lon) / 180) % 2) * 180) + (lon % 180);
 						var znak = {2: 'E', 0: 'W'} [(azimuth / Math.abs (azimuth)) +1],
 							result = Math.abs (azimuth);
 						if (typeof lat != "number") {
@@ -385,10 +387,5 @@
 					},
 				},
 				methods: {
-					update : function (text, event) {
-						console.log('df');
-						console.log(text);
-						console.log(event);
-					},
 				},
 			});
